@@ -1,5 +1,9 @@
-<div class="jumbotron">
-  <h1 class="display-4">Rekimy</h1>
-  <hr class="my-4">
-  <%= link_to '無料ではじめる', signup_path, class: 'btn btn-primary btn-ig' %>
-</div>
+<% if logged_in? %>
+  <p>ログインユーザー：<%= current_user.name %></p>
+<% else %>
+  <div class="jumbotron">
+    <h1 class="display-4">Rekimy</h1>
+    <hr class="my-4">
+    <%= link_to '無料ではじめる', signup_path, class: 'btn btn-primary btn-ig' %>
+  </div>
+<% end %>
