@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show, :edit, :editoutline, :update, :destroy]
   
   def show
+    @user = current_user
+    @histories = @user.histories.order(id: :desc)
   end
 
   def new

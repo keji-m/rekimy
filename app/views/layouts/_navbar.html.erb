@@ -1,9 +1,13 @@
 <header class="mb-4">
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" href="/">Rekimy</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <% if logged_in? %>
+      <a class="navbar-brand" href="/mypage">Rekimy</a>
+    <% else %>
+      <a class="navbar-brand" href="/">Rekimy</a>
+    <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">

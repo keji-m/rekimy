@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   get 'mypage/edit', to: 'users#edit'
   get 'mypage/outline/edit', to: 'users#editoutline'
   resources :users, only: [:create, :update, :destroy]
+  
+  resources :histories, only: [:create, :new, :edit, :update, :destroy]
 
 end

@@ -1,0 +1,9 @@
+<ul class="list-unstyled">
+  <%= @histories.each do |history| %>
+    <li><%= history.began_at %></li>
+    <li><%= history.ended_at %></li>
+    <li><%= history.company %></li>
+    <li><%= history.department %></li>
+    <li><%= history.detail %></li>
+  <% end %>
+</ul>

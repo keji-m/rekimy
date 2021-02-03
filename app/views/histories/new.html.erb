@@ -1,0 +1,37 @@
+<div class="text-center">
+  <h1>職務経歴詳細の追加</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    
+    <%= form_with(model: @history, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+    
+      <div class="form-group">
+        <%= f.label :began_at, '開始年月日' %>
+        <%= f.text_field :began_at, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ended_at, '終了年月日' %>
+        <%= f.text_field :ended_at, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :company, '会社名' %>
+        <%= f.text_field :company, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :department, '所属部署名' %>
+        <%= f.text_field :department, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :detail, '職務内容説明' %>
+        <%= f.text_area :detail, class: 'form-control' %>
+      </div>
+      <div class="my-4">
+      <%= f.submit '追加する', class: 'btn btn-primary btn-block' %>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
