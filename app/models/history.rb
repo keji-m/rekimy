@@ -5,4 +5,7 @@ class History < ApplicationRecord
   validates :company, presence: true, length: { maximum: 255 }
   validates :department, length: { maximum: 255 }
   
+  has_many :history_skills, dependent: :destroy
+  has_many :skills, through: :history_skills
+  
 end

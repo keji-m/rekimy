@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_130325) do
+ActiveRecord::Schema.define(version: 2021_02_05_081216) do
 
   create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "began_at"
@@ -24,6 +24,29 @@ ActiveRecord::Schema.define(version: 2021_02_02_130325) do
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
+  create_table "history_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "history_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["history_id"], name: "index_history_skills_on_history_id"
+    t.index ["skill_id"], name: "index_history_skills_on_skill_id"
+  end
+
+  create_table "skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type_id"], name: "index_skills_on_type_id"
+  end
+
+  create_table "types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -34,4 +57,7 @@ ActiveRecord::Schema.define(version: 2021_02_02_130325) do
   end
 
   add_foreign_key "histories", "users"
+  add_foreign_key "history_skills", "histories"
+  add_foreign_key "history_skills", "skills"
+  add_foreign_key "skills", "types"
 end

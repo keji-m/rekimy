@@ -23,12 +23,23 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
   
   def editoutline
   end
 
   def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      flash[:success] = 'アカウントを設定しました'
+      redirect_to mypage_url
+    else
+      flash.now[:danger] = 'ユーザー登録に失敗しました'
+      render :edit
+    end
+    
   end
 
   def destroy

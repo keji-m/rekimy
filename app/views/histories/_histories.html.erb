@@ -1,14 +1,14 @@
 <div class="my-4">
-  <button type="button" class="btn btn-primary btn-lg btn-block">職務経歴詳細を追加する</button>
+  <%= link_to "職務経歴詳細を追加する", new_history_path, class: 'btn btn-outline-primary btn-block' %>
 </div>
 <div class="mb-4">
 <% @histories.each do |history| %>
   <ul class="list-unstyled">
     <div class="py-2 text-dark bg-light">
-      <li><%= link_to "編集", edit_history_path(history), class: 'mx-2 btn btn-outline-primary btn-sm' %><%= link_to "削除", history, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'mx-2 btn btn-outline-danger btn-sm' %><span class="mx-2">ID:<%= history.id %></span><span class="mr-2"><%= history.began_at %></span><span class="mr-2">〜</span><span class="mr-4"><%= history.ended_at %></span><span class="mr-4"><%= history.company %></span><span class="mr-4"><%= history.department %></span></li>
+      <li><%= link_to "編集", edit_history_path(history), class: 'mx-2 btn btn-outline-primary btn-sm' %><%= link_to "削除", history, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'mx-2 btn btn-outline-danger btn-sm' %><span class="mx-2">ID:<%= history.id %></span><span class="mr-2"><%= history.began_at %></span><span class="mr-2">〜</span><span class="mr-4"><%= history.ended_at %></span><span class="mr-2"><%= history.company %></span><span class="mr-2"><%= history.department %></span></li>
     </div>
     <div class="p-2">
-      <li><%= history.detail %></li>
+      <li><%= safe_join(history.detail.split("\n"),tag(:br)) %></li>
     </div>
   </ul>
 <% end %>

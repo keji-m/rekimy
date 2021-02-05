@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   get 'mypage/outline/edit', to: 'users#editoutline'
   resources :users, only: [:create, :update, :destroy]
   
-  resources :histories, only: [:create, :new, :edit, :update, :destroy]
+  resources :histories, only: [:create, :new, :edit, :update, :destroy] do
+    member do
+      get :holds
+    end
+  end
+    
+  resources :history_skills, only: [:create, :destroy]
+  
 
 end
