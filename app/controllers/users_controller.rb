@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user
-    @histories = @user.histories.order(id: :desc)
+    @histories = @user.histories.order(began_at: :desc)
   end
 
   def new

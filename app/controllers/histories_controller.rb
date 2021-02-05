@@ -18,12 +18,27 @@ class HistoriesController < ApplicationController
   end
 
   def edit
+    @history = History.find(params[:id])
   end
 
   def update
+    @history = History.find(params[:id])
+    
+    if @history.update(history_params)
+      flash[:success] = '職務経歴詳細を変更しました'
+      redirect_to mypage_url
+    else
+      flash.now[:danger] = '職務経歴詳細を変更できませんでした'
+      render :edit
+    end
   end
 
   def destroy
+    @history = History.find(params[:id])
+    @history.destroy
+    
+    flash[:success] = '職務経歴詳細を削除しました'
+    redirect_to mypage_url
   end
   
   private
