@@ -1,0 +1,53 @@
+<div class="row">
+  <div>
+    <div>
+      <h3><%= @user.name %></h3>
+      <h5>職務要約</h5>
+      <div>
+        <%= @user.outline %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-9">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><a href="/mypage" class="nav-link">職務経歴</a></li>
+      <li class="nav-item"><a href="/mypage/certificates" class="nav-link active">資格・免許</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">その他</a></li>
+    </ul>
+    <div class="my-4">
+      <%= link_to "資格・免許を追加する", new_certificate_path, class: 'btn btn-outline-primary btn-block' %>
+    </div>
+    <div class="mb-4">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">ID</th>
+            <th scope="col">名称</th>
+            <th scope="col">取得年月日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @certificates.each do |certificate| %>
+          <tr scope="row">
+            <td><%= link_to "編集", edit_certificate_path(certificate), class: 'mx-2 btn btn-outline-primary btn-sm' %><%= link_to "削除", certificate, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'mx-2 btn btn-outline-danger btn-sm' %></td>
+            <td><span class="mx-2 badge badge-secondary">ID:<%= certificate.id %></span></td>
+            <td><%= certificate.name %></td>
+            <td><%= certificate.date %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="col-sm-3">
+    <div class="mb-4">
+      PR
+    </div>        
+    <div class="mb-4">
+      PR
+    </div>        
+  </aside>
+</div>

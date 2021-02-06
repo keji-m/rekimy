@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'mypage/edit', to: 'users#edit'
   get 'mypage/outline/edit', to: 'users#editoutline'
   resources :users, only: [:create, :update, :destroy]
-  
+
   resources :histories, only: [:create, :new, :edit, :update, :destroy] do
     member do
       get :holds
@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   end
     
   resources :history_skills, only: [:create, :destroy]
+  
+  get 'mypage/certificates', to: 'certificates#show'
+  resources :certificates, only: [:new, :create, :edit, :update, :destroy]
   
 
 end
